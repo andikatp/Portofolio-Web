@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./style.module.css";
+import styles from "./style.module.scss";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);

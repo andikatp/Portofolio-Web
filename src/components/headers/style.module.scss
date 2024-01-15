@@ -22,6 +22,7 @@
       background-color: white;
       margin: auto;
       position: relative;
+      transition: transform 0.3s;
     }
 
     &::after {

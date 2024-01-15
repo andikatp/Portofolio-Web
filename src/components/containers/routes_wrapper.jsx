@@ -7,6 +7,7 @@ import About from "../../pages/about";
 import Unknown from "../../pages/unknown";
 import "../../css/App.css";
 import Header from "../headers";
+import Work from "../../pages/work";
 
 const RoutesWrapper = () => {
   const router = createBrowserRouter([
@@ -19,10 +20,10 @@ const RoutesWrapper = () => {
       ),
     },
     {
-      path: "/contact",
+      path: "/work",
       element: (
         <Layout>
-          <Contact />
+          <Work />
         </Layout>
       ),
     },
@@ -31,6 +32,14 @@ const RoutesWrapper = () => {
       element: (
         <Layout>
           <About />
+        </Layout>
+      ),
+    },
+    {
+      path: "/contact",
+      element: (
+        <Layout>
+          <Contact />
         </Layout>
       ),
     },
