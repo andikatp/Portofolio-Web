@@ -3,7 +3,9 @@ import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import styles from "./style.module.scss";
 import { menuSlide } from "../anim";
-import Link from "./link";
+import Link from "./Link";
+import Curve from "./curve";
+import Footer from "./footer";
 
 const NavHeader = () => {
   const navItems = [
@@ -60,14 +62,9 @@ const NavHeader = () => {
             );
           })}
         </div>
-
-        <div className={styles.footer}>
-          <a>Awwwards</a>
-          <a>Instagram</a>
-          <a>Dribble</a>
-          <a>LinkedIn</a>
-        </div>
+        <Footer />
       </div>
+      <Curve />
     </motion.div>
   );
 };
