@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import styles from "./style.module.scss";
-import { useNavigate } from "react-router-dom";
+import { menuSlide } from "../anim";
 import Link from "./link";
 
 const NavHeader = () => {
@@ -23,23 +25,50 @@ const NavHeader = () => {
     },
   ];
 
-  const navigate = useNavigate();
+  const location = useLocation();
+  const pathname = location.pathname;
 
-  const [selectedIndicator, setSelectedIndicator] = useState(navigate);
+  const [selectedIndicator, setSelectedIndicator] = useState(pathname);
 
   return (
-    <div className={styles.menu}>
+    <motion.div
+      variants={menuSlide}
+      initial="initial"
+      animate="enter"
+      exit="exit"
+      className={styles.menu}
+    >
       <div className={styles.body}>
-        <div className={styles.nav}>
+        <div
+          onMouseLeave={() => {
+            setSelectedIndicator(pathname);
+          }}
+          className={styles.nav}
+        >
           <div className={styles.header}>
             <p>Navigation</p>
-            {navItems.map((item, index) => {
-              return <Link data={{ ...item, index }} />;
-            })}
           </div>
+
+          {navItems.map((data, index) => {
+            return (
+              <Link
+                key={index}
+                data={{ ...data, index }}
+                isActive={selectedIndicator == data.href}
+                setSelectedIndicator={setSelectedIndicator}
+              ></Link>
+            );
+          })}
+        </div>
+
+        <div className={styles.footer}>
+          <a>Awwwards</a>
+          <a>Instagram</a>
+          <a>Dribble</a>
+          <a>LinkedIn</a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

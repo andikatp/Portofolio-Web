@@ -9,55 +9,6 @@ import "../../css/App.css";
 import Header from "../headers";
 import Work from "../../pages/work";
 
-const RoutesWrapper = () => {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: (
-        <Layout>
-          <Homepage />
-        </Layout>
-      ),
-    },
-    {
-      path: "/work",
-      element: (
-        <Layout>
-          <Work />
-        </Layout>
-      ),
-    },
-    {
-      path: "/about",
-      element: (
-        <Layout>
-          <About />
-        </Layout>
-      ),
-    },
-    {
-      path: "/contact",
-      element: (
-        <Layout>
-          <Contact />
-        </Layout>
-      ),
-    },
-    {
-      path: "*",
-      element: (
-        <Layout>
-          <Unknown />
-        </Layout>
-      ),
-    },
-  ]);
-
-  return createRoot(document.getElementById("root")).render(
-    <RouterProvider router={router} />
-  );
-};
-
 const Layout = ({ children }) => {
   return (
     <div>
@@ -66,5 +17,52 @@ const Layout = ({ children }) => {
     </div>
   );
 };
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <Layout>
+        <Homepage />
+      </Layout>
+    ),
+  },
+  {
+    path: "/work",
+    element: (
+      <Layout>
+        <Work />
+      </Layout>
+    ),
+  },
+  {
+    path: "/about",
+    element: (
+      <Layout>
+        <About />
+      </Layout>
+    ),
+  },
+  {
+    path: "/contact",
+    element: (
+      <Layout>
+        <Contact />
+      </Layout>
+    ),
+  },
+  {
+    path: "*",
+    element: (
+      <Layout>
+        <Unknown />
+      </Layout>
+    ),
+  },
+]);
+
+const root = createRoot(document.getElementById("root"));
+
+const RoutesWrapper = () => <RouterProvider router={router} />;
 
 export default RoutesWrapper;
