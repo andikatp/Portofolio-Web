@@ -1,5 +1,4 @@
-body{
-    margin: 0px;
-    overflow: hidden; /* Hide scrollbars */
-    /* cursor: wait; Add after Preloader*/
+body {
+  margin: 0px;
+  overflow: hidden;
 }
